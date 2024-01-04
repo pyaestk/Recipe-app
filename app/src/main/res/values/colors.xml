@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blacklight">#3A3A3A</color>
+    <color name="my_light_primary">#FDD835</color>
+    <color name="my_light_secondary">#FFE596</color>
+    <color name="colorLayerDark">#88000000</color>
+    <color name="colorLayerSemiDark">#41000000</color>
+    <color name="colorTitle">#734000</color>
+</resources>

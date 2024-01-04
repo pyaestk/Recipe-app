@@ -1,0 +1,16 @@
+package com.example.foodrecipe.retrofit
+
+import com.google.gson.Gson
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
+object retrofitInstance {
+
+    val api: MealApi by lazy {
+        Retrofit.Builder()
+            .baseUrl("https://www.themealdb.com/api/json/v1/1/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(MealApi::class.java)
+    }
+}
