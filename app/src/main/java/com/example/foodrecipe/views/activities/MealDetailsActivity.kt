@@ -1,5 +1,7 @@
 package com.example.foodrecipe.views.activities
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -7,10 +9,14 @@ import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.example.foodrecipe.data.Meal
 import com.example.foodrecipe.databinding.ActivityMealDetailsBinding
+import com.example.foodrecipe.db.MealDatabase
 import com.example.foodrecipe.viewModel.MealDetailViewModel
+import com.example.foodrecipe.viewModel.MealViewModelFactory
 import com.example.foodrecipe.views.fragments.HomeFragment
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
@@ -29,7 +35,10 @@ class MealDetailsActivity : AppCompatActivity() {
         binding = ActivityMealDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mealMvvm = ViewModelProvider(this).get(MealDetailViewModel::class.java)
+//        mealMvvm = ViewModelProvider(this).get(MealDetailViewModel::class.java)
+        val mealDatabase = MealDatabase.getInstance(this)
+        val viewModelFactory = MealViewModelFactory(mealDatabase)
+        mealMvvm = ViewModelProvider(this, viewModelFactory).get(MealDetailViewModel::class.java)
 
         val intent = intent
         mealId = intent.getStringExtra(HomeFragment.MealID)!!
@@ -47,15 +56,19 @@ class MealDetailsActivity : AppCompatActivity() {
         mealMvvm.getMealDetails(mealId)
 
         observerMealDetailsLiveData()
-        
+
+        onFavoriteClick()
     }
 
+    private var mealToSave: Meal? = null
     fun observerMealDetailsLiveData() {
         mealMvvm.observeMealDetailsLiveData().observe(this) { meal ->
+
+            mealToSave = meal
+
             binding.mealCategoryDetailsTextView.text = " Category: ${meal.strCategory}"
             binding.mealAreaDetailsTextView.text = " Area: ${meal.strArea}"
             binding.mealRecipeDescriptionTextView.text = meal.strInstructions
-
             
             onResponseDetails()
         }
@@ -77,5 +90,14 @@ class MealDetailsActivity : AppCompatActivity() {
         binding.mealCategoryDetailsTextView.visibility = View.VISIBLE
         binding.mealRecipeDescriptionTextView.visibility = View.VISIBLE
         binding.textViewInstruction.visibility = View.VISIBLE
+    }
+
+    private fun onFavoriteClick() {
+        binding.likedButton.setOnClickListener {
+            mealToSave?.let {
+                mealMvvm.insertMeal(it)
+                Toast.makeText(this, "Recipe has been marked as favorites", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
