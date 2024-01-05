@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -39,6 +41,7 @@ android {
 }
 
 dependencies {
+    
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -65,6 +68,14 @@ dependencies {
     //youtube view
     implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
     implementation("com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.28")
-    
+
+    //room
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    //Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$room_version")
+    //kapt
+    kapt("androidx.room:room-compiler:$room_version")
 
 }
