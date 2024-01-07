@@ -6,10 +6,13 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.foodrecipe.data.Category
 import com.example.foodrecipe.data.Meal
 import com.example.foodrecipe.databinding.MealItemBinding
 
 class FavMealsAdapter: RecyclerView.Adapter<FavMealsAdapter.FavMealsViewHolder>(){
+
+    var onItemClick: ((Meal) -> Unit) ?= null
 
     private val diffUtil = object : DiffUtil.ItemCallback<Meal>(){
         override fun areItemsTheSame(oldItem: Meal, newItem: Meal): Boolean {
@@ -38,5 +41,9 @@ class FavMealsAdapter: RecyclerView.Adapter<FavMealsAdapter.FavMealsViewHolder>(
         Glide.with(holder.itemView).load(meal.strMealThumb).into(holder.binding.mealImageView)
 
         holder.binding.mealNameTextView.text = meal.strMeal
+
+        holder.itemView.setOnClickListener {
+            onItemClick!!.invoke(differ.currentList[position])
+        }
     }
 }

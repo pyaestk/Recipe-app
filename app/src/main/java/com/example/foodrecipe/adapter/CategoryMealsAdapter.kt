@@ -4,13 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.foodrecipe.data.Meal
-import com.example.foodrecipe.data.MealList
 import com.example.foodrecipe.data.MealsByCategory
-import com.example.foodrecipe.data.PopularMeals
-import com.example.foodrecipe.databinding.ActivityCategoryMealsBinding
 import com.example.foodrecipe.databinding.MealItemBinding
-import com.example.foodrecipe.views.activities.CategoryMealsActivity
 
 class CategoryMealsAdapter : RecyclerView.Adapter<CategoryMealsAdapter.CategoryMealsViewHolder>(){
 
