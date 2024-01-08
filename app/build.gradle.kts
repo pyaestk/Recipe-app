@@ -78,4 +78,6 @@ dependencies {
     //kapt
     kapt("androidx.room:room-compiler:$room_version")
 
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+
 }

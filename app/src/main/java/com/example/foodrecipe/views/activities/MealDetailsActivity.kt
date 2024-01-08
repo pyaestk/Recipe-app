@@ -1,14 +1,8 @@
 package com.example.foodrecipe.views.activities
 
-import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.webkit.WebChromeClient
-import android.webkit.WebSettings
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -16,10 +10,8 @@ import com.example.foodrecipe.data.Meal
 import com.example.foodrecipe.databinding.ActivityMealDetailsBinding
 import com.example.foodrecipe.db.MealDatabase
 import com.example.foodrecipe.viewModel.MealDetailViewModel
-import com.example.foodrecipe.viewModel.MealViewModelFactory
+import com.example.foodrecipe.viewModel.factory.MealViewModelFactory
 import com.example.foodrecipe.views.fragments.HomeFragment
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 
 class MealDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMealDetailsBinding

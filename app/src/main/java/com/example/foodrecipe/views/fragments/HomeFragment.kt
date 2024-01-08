@@ -17,6 +17,7 @@ import com.example.foodrecipe.data.Meal
 import com.example.foodrecipe.databinding.FragmentHomeBinding
 import com.example.foodrecipe.viewModel.HomeViewModel
 import com.example.foodrecipe.views.activities.CategoryMealsActivity
+import com.example.foodrecipe.views.activities.MainActivity
 import com.example.foodrecipe.views.activities.MealDetailsActivity
 
 class HomeFragment : Fragment() {
@@ -38,7 +39,8 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        homeMVVM = ViewModelProvider(this).get(HomeViewModel::class.java)
+//        homeMVVM = ViewModelProvider(this).get(HomeViewModel::class.java)
+        homeMVVM = (activity as MainActivity).viewModel
         popularMealsAdapter = PopularMealAdapter()
 
     }

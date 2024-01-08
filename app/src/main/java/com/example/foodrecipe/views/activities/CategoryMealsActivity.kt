@@ -3,11 +3,8 @@ package com.example.foodrecipe.views.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.CountDownTimer
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.foodrecipe.R
 import com.example.foodrecipe.adapter.CategoryMealsAdapter
 import com.example.foodrecipe.databinding.ActivityCategoryMealsBinding
 import com.example.foodrecipe.viewModel.CategoryMealsViewModel
