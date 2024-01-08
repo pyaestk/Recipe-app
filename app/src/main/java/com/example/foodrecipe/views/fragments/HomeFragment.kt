@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.foodrecipe.R
 import com.example.foodrecipe.adapter.CategoryAdapter
 import com.example.foodrecipe.adapter.PopularMealAdapter
 import com.example.foodrecipe.data.PopularMeals
@@ -88,6 +90,11 @@ class HomeFragment : Fragment() {
         homeMVVM.getCategories()
         observeCategoryItems()
         onCategoryClick()
+
+        //search meal icon
+        binding.searchButton.setOnClickListener {
+            findNavController().navigate(R.id.searchFragment)
+        }
     }
 
     fun observerRandomMeal() {

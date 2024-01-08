@@ -31,4 +31,9 @@ interface MealApi {
     fun getMealsByCategory(
         @Query("c") categoryName: String
     ): Call<MealsByCategoryList>
+
+    @GET("search.php")
+    fun searchMealByName(
+        @Query("s") searchQuery: String
+    ): Call<MealList>
 }

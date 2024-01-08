@@ -2,7 +2,6 @@ package com.example.foodrecipe.views.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.foodrecipe.R
-import com.example.foodrecipe.adapter.FavMealsAdapter
-import com.example.foodrecipe.data.Meal
+import com.example.foodrecipe.adapter.MealsAdapter
 import com.example.foodrecipe.databinding.FragmentFavBinding
 import com.example.foodrecipe.viewModel.HomeViewModel
 import com.example.foodrecipe.views.activities.MainActivity
@@ -22,7 +19,7 @@ import com.google.android.material.snackbar.Snackbar
 class FavFragment : Fragment() {
     private lateinit var binding: FragmentFavBinding
     private lateinit var viewModel: HomeViewModel
-    private lateinit var favMealsAdapter: FavMealsAdapter
+    private lateinit var mealsAdapter: MealsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,10 +38,10 @@ class FavFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //adapter
-        favMealsAdapter = FavMealsAdapter()
+        mealsAdapter = MealsAdapter()
         binding.FavRecycler.apply {
             layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
-            adapter = favMealsAdapter
+            adapter = mealsAdapter
         }
         observeFav()
 
@@ -60,8 +57,8 @@ class FavFragment : Fragment() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                val deletedmeal = favMealsAdapter.differ.currentList[position]
-                viewModel.deleteMeal(favMealsAdapter.differ.currentList[position])
+                val deletedmeal = mealsAdapter.differ.currentList[position]
+                viewModel.deleteMeal(mealsAdapter.differ.currentList[position])
 
                 Snackbar.make(requireView(), "Meal has been removed from favorites", Snackbar.LENGTH_LONG)
                     .setAction(
@@ -81,12 +78,12 @@ class FavFragment : Fragment() {
 
     fun observeFav(){
         viewModel.observeFavoriteMealsLiveData().observe(requireActivity()) { meals ->
-             favMealsAdapter.differ.submitList(meals)
+             mealsAdapter.differ.submitList(meals)
         }
     }
 
     fun onFavMealClick(){
-        favMealsAdapter.onItemClick = { meal ->
+        mealsAdapter.onItemClick = { meal ->
             val intent = Intent(requireContext(), MealDetailsActivity::class.java)
             intent.putExtra(HomeFragment.MealID, meal.idMeal)
             intent.putExtra(HomeFragment.MealName, meal.strMeal)
