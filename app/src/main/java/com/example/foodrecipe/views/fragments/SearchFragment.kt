@@ -1,5 +1,6 @@
 package com.example.foodrecipe.views.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import com.example.foodrecipe.databinding.FragmentSearchBinding
 import com.example.foodrecipe.retrofit.MealApi
 import com.example.foodrecipe.viewModel.HomeViewModel
 import com.example.foodrecipe.views.activities.MainActivity
+import com.example.foodrecipe.views.activities.MealDetailsActivity
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -52,7 +54,7 @@ class SearchFragment : Fragment() {
         }
 
         observeMealsLiveData()
-
+        onCategoryMealClick()
 
         //update the recycler
         var searchJob: Job? = null
@@ -75,6 +77,16 @@ class SearchFragment : Fragment() {
     private fun observeMealsLiveData() {
         viewModel.observeSearchMealByNameLiveData().observe(viewLifecycleOwner) { mealList ->
             searchAdapter.differ.submitList(mealList)
+        }
+    }
+
+    private fun onCategoryMealClick() {
+        searchAdapter.onItemClick = { meal ->
+            val intent = Intent(requireContext(), MealDetailsActivity::class.java)
+            intent.putExtra(HomeFragment.MealID, meal.idMeal)
+            intent.putExtra(HomeFragment.MealName, meal.strMeal)
+            intent.putExtra(HomeFragment.MealImage, meal.strMealThumb)
+            startActivity(intent)
         }
     }
 }

@@ -36,7 +36,7 @@ class CategoryMealsActivity : AppCompatActivity() {
         categoryMealsMvvm.getMealsByCategory(intent.getStringExtra(HomeFragment.Category_name)!!)
 
         observeCategoryMealsLiveData()
-        onPopularMealClick()
+        onCategoryMealClick()
     }
 
     fun observeCategoryMealsLiveData() {
@@ -47,7 +47,7 @@ class CategoryMealsActivity : AppCompatActivity() {
         }
     }
 
-    fun onPopularMealClick() {
+    fun onCategoryMealClick() {
         categoryMealsAdapter.onItemClick = { meal ->
             val intent = Intent(applicationContext, MealDetailsActivity::class.java)
             intent.putExtra(HomeFragment.MealID, meal.idMeal)
