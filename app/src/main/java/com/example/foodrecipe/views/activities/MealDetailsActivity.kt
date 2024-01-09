@@ -10,7 +10,7 @@ import com.example.foodrecipe.data.Meal
 import com.example.foodrecipe.databinding.ActivityMealDetailsBinding
 import com.example.foodrecipe.db.MealDatabase
 import com.example.foodrecipe.viewModel.MealDetailViewModel
-import com.example.foodrecipe.viewModel.factory.MealViewModelFactory
+import com.example.foodrecipe.viewModel.factory.MealDetailViewModelFactory
 import com.example.foodrecipe.views.fragments.HomeFragment
 
 class MealDetailsActivity : AppCompatActivity() {
@@ -29,7 +29,7 @@ class MealDetailsActivity : AppCompatActivity() {
 
 //        mealMvvm = ViewModelProvider(this).get(MealDetailViewModel::class.java)
         val mealDatabase = MealDatabase.getInstance(this)
-        val viewModelFactory = MealViewModelFactory(mealDatabase)
+        val viewModelFactory = MealDetailViewModelFactory(mealDatabase)
         mealMvvm = ViewModelProvider(this, viewModelFactory).get(MealDetailViewModel::class.java)
 
         val intent = intent

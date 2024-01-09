@@ -50,8 +50,8 @@
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
                     android:text="Recipe app"
                     android:textColor="@color/colorTitle"
                     android:textSize="30sp"
@@ -59,8 +59,9 @@
 
                 <ImageView
                     android:id="@+id/search_button"
-                    android:layout_width="40dp"
+                    android:layout_width="45dp"
                     android:layout_height="match_parent"
+                    android:tint="@color/colorTitle"
                     app:srcCompat="@drawable/ic_search" />
 
             </LinearLayout>

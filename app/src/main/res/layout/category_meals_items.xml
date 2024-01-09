@@ -27,6 +27,15 @@
 <!--            tools:srcCompat="@tools:sample/avatars" />-->
 <!--    </androidx.cardview.widget.CardView>-->
 
+    <View
+        android:layout_width="@dimen/_95sdp"
+        android:layout_height="@dimen/_95sdp"
+        android:background="#41DDDDDD"
+        app:layout_constraintBottom_toBottomOf="@+id/category_imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/category_imageView"
         android:layout_width="@dimen/_95sdp"
@@ -35,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+         />
 
     <TextView
         android:id="@+id/category_name_textView"
@@ -44,7 +53,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:text="Category name"
-        android:textColor="@color/black"
+        android:textColor="@color/colorTitle"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

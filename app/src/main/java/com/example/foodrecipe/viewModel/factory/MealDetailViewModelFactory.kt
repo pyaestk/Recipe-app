@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.foodrecipe.db.MealDatabase
 import com.example.foodrecipe.viewModel.MealDetailViewModel
 
-class MealViewModelFactory(private val mealDatabase: MealDatabase): ViewModelProvider.Factory{
+class MealDetailViewModelFactory(private val mealDatabase: MealDatabase): ViewModelProvider.Factory{
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return MealDetailViewModel(mealDatabase) as T
     }

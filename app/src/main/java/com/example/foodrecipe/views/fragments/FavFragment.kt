@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.example.foodrecipe.R
 import com.example.foodrecipe.adapter.MealsAdapter
 import com.example.foodrecipe.databinding.FragmentFavBinding
 import com.example.foodrecipe.viewModel.HomeViewModel
@@ -34,6 +36,7 @@ class FavFragment : Fragment() {
         binding = FragmentFavBinding.inflate(inflater)
         return binding.root
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

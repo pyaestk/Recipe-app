@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hapticFeedbackEnabled="true"
-        app:backgroundTint="#FFFFFD"
+        app:backgroundTint="@color/white"
         app:itemIconTint="#734000"
         app:itemTextColor="#734000"
         app:labelVisibilityMode="labeled"

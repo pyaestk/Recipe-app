@@ -21,6 +21,7 @@ import com.example.foodrecipe.viewModel.HomeViewModel
 import com.example.foodrecipe.views.activities.CategoryMealsActivity
 import com.example.foodrecipe.views.activities.MainActivity
 import com.example.foodrecipe.views.activities.MealDetailsActivity
+import com.example.foodrecipe.views.activities.SearchActivity
 
 class HomeFragment : Fragment() {
 
@@ -93,7 +94,8 @@ class HomeFragment : Fragment() {
 
         //search meal icon
         binding.searchButton.setOnClickListener {
-            findNavController().navigate(R.id.searchFragment)
+             val intent = Intent(activity, SearchActivity::class.java)
+            startActivity(intent)
         }
     }
 
