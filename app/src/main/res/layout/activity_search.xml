@@ -28,7 +28,8 @@
             android:hint="Search recipe"
             android:inputType="text"
             android:paddingStart="16dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/colorLayerSemiDark" />
 
         <ImageView
             android:id="@+id/img_search"

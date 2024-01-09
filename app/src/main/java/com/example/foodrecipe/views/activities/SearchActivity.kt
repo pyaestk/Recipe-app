@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.foodrecipe.R
 import com.example.foodrecipe.adapter.MealsAdapter
 import com.example.foodrecipe.databinding.ActivitySearchBinding
-import com.example.foodrecipe.databinding.FragmentSearchBinding
 import com.example.foodrecipe.db.MealDatabase
 import com.example.foodrecipe.viewModel.HomeViewModel
 import com.example.foodrecipe.viewModel.SearchViewModel
