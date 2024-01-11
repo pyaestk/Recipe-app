@@ -65,9 +65,6 @@ dependencies {
     val  lifecycle_version = "2.4.0"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
-    //youtube view
-    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
-    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.28")
 
     //room
     val room_version = "2.6.1"
